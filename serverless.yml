@@ -53,10 +53,16 @@ provider:
 #  exclude:
 #    - exclude-me.js
 #    - exclude-me-dir/**
+plugins:
+  - serverless-offline
 
 functions:
   hello:
-    handler: handler.hello
+    handler: lib/handler.hello
+    events:
+      - http:
+          path: /hello
+          method: get
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
