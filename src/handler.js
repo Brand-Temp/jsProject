@@ -1,6 +1,4 @@
-'use strict';
-
-export const hello = async (event, context) => {
+export const hello = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
@@ -13,7 +11,7 @@ export const hello = async (event, context) => {
   // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
 };
 
-export const todo = async (event, context) => {
+export const todo = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
