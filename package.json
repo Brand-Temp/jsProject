@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "serverless offline start",
     "build": "babel src -d lib",
     "lint": "eslint src/**/*.js",
@@ -19,6 +19,7 @@
     "babel-preset-env": "^1.7.0",
     "eslint": "^5.6.0",
     "eslint-config-seek": "^3.1.0",
+    "jest": "^23.6.0",
     "prettier": "^1.14.3",
     "serverless-offline": "^3.25.12"
   }
