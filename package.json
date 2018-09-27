@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "serverless offline start",
-    "build": "babel src -d lib",
+    "start": "npm run build && serverless offline start",
+    "build": "babel src -d lib --ignore '**/*.test.js'",
     "lint": "eslint src/**/*.js",
     "format": "prettier --write src/**/*.js"
   },
