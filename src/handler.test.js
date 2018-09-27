@@ -1,5 +1,4 @@
-import { hello } from './handler';
-import { todo } from './handler';
+import { hello, todo } from './handler';
 
 describe('The hello handler', () => {
   it('should return 200 and the event', async () => {
