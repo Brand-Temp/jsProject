@@ -45,7 +45,7 @@ describe('The todo handler', () => {
 });
 
 describe('The todo handler', () => {
-  it('should return "Your request (todo/{id}) was not able to be completed as the id was not a number."', async () => {
+  it('should return 400 if the id is not an integer.', async () => {
     const testEvent = {
       headers: {
         'User-Agent': 'Todo test (Jest)',
