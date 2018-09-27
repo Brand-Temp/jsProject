@@ -43,3 +43,26 @@ describe('The todo handler', () => {
     });
   });
 });
+
+describe('The todo handler', () => {
+  it('should return "Your request (todo/{id}) was not able to be completed as the id was not a number."', async () => {
+    const testEvent = {
+      headers: {
+        'User-Agent': 'Todo test (Jest)',
+      },
+      pathParameters: {
+        id: 'abc',
+      },
+      body: 'This test should pass',
+    };
+
+    const response = await todo(testEvent);
+
+    expect(response).toEqual({
+      statusCode: 400,
+      body: JSON.stringify({
+        message: 'Your request (todo/abc) was not able to be completed as the id was not a number.',
+      }),
+    });
+  });
+});
