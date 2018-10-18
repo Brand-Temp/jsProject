@@ -1,4 +1,4 @@
-export const hello = async (event) => {
+export const hello = async event => {
   return {
     statusCode: 200,
     body: JSON.stringify({
@@ -8,9 +8,17 @@ export const hello = async (event) => {
   };
 };
 
-export const todo = async (event) => {
+export const todo = async event => {
   const id = event.pathParameters.id;
-  if(Number.isInteger(id)) {
+  if (Number.isInteger(id)) {
+    const mysql = require('mysql');
+    const connection = mysql.createConnection({
+      host: process.env.RDS_HOSTNAME,
+      user: process.env.RDS_USERNAME,
+      password: process.env.RDS_PASSWORD,
+      port: process.env.RDS_PORT,
+    });
+    // Read in the request from a query and respond as such
     return {
       statusCode: 200,
       body: JSON.stringify({

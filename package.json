@@ -31,6 +31,7 @@
     "serverless-offline": "^3.25.12"
   },
   "dependencies": {
-    "babel-preset-es2017": "^6.24.1"
+    "babel-preset-es2017": "^6.24.1",
+    "mysql": "^2.16.0"
   }
 }
