@@ -18,13 +18,37 @@ export const todo = async event => {
       password: process.env.RDS_PASSWORD,
       port: process.env.RDS_PORT,
     });
-    // Read in the request from a query and respond as such
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        message: `Your request (todo/${id}) was completed :D`,
-      }),
-    };
+    connection.connect(function(err) {
+      if (err) {
+        return {
+          statusCode: 500,
+          body: JSON.stringify({
+            message: `Your request (todo/${id}) could not be completed`,
+          }),
+        };
+      }
+      let item = '';
+      connection.query(`SELECT content FROM todos WHERE id = ${id}`, function (error, result) {
+        if (error) {
+          return {
+            statusCode: 500,
+            body: JSON.stringify({
+              message: `Your request (todo/${id}) could not be completed`,
+            }),
+          };
+        }
+        item = result;
+        return 0;
+      });
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          message: `Your request (todo/${id}) was completed :D`,
+          content: item,
+        }),
+      };
+    });
+    connection.close();
   }
   return {
     statusCode: 400,
