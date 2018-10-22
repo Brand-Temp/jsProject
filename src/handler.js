@@ -11,7 +11,7 @@ export const hello = async event => {
 export const todo = async event => {
   const id = event.pathParameters.id;
   if (Number.isInteger(id)) {
-    const mysql = require('mysql');
+    const mysql = require("pg");
     const connection = mysql.createConnection({
       host: process.env.RDS_HOSTNAME,
       user: process.env.RDS_USERNAME,
