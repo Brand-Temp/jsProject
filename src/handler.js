@@ -1,5 +1,6 @@
-import axios from 'axios'
-export const hello = async (event) => {
+import axios from 'axios';
+
+export const hello = async event => {
   return {
     statusCode: 200,
     body: JSON.stringify({
@@ -9,9 +10,9 @@ export const hello = async (event) => {
   };
 };
 
-export const todo = async (event) => {
+export const todo = async event => {
   const id = event.pathParameters.id;
-  if(Number.isInteger(id)) {
+  if (Number.isInteger(id)) {
     return {
       statusCode: 200,
       body: JSON.stringify({
@@ -27,10 +28,12 @@ export const todo = async (event) => {
   };
 };
 
-export const api_test = async (event) => {
+export const api_test = async event => {
   let returned_data = 0;
   try {
-    returned_data = await axios.get('https://jsonplaceholder.typicode.com/posts/5');
+    returned_data = await axios.get(
+      'https://jsonplaceholder.typicode.com/posts/5'
+    );
   } catch (err) {
     returned_data = 'There was an error with the api request';
   }
@@ -40,6 +43,6 @@ export const api_test = async (event) => {
       message: 'Here is what the api responded:',
       data: returned_data.data.title,
       input: event,
-    })
+    }),
   };
 };

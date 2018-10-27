@@ -61,14 +61,15 @@ describe('The todo handler', () => {
     expect(response).toEqual({
       statusCode: 400,
       body: JSON.stringify({
-        message: 'Your request (todo/abc) was not able to be completed as the id was not a number.',
+        message:
+          'Your request (todo/abc) was not able to be completed as the id was not a number.',
       }),
     });
   });
 });
 
 describe('The api_test handler', () => {
-  it('should return the "title" field of the 5th post.', async() => {
+  it('should return the "title" field of the 5th post.', async () => {
     const testEvent = {
       headers: {
         'User-Agent': 'Test using axios to request from an api',
