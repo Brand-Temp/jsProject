@@ -29,19 +29,19 @@ export const todo = async event => {
 };
 
 export const api_test = async event => {
-  let returned_data = 0;
+  let returnedData = 0;
   try {
-    returned_data = await axios.get(
+    returnedData = await axios.get(
       'https://jsonplaceholder.typicode.com/posts/5'
     );
   } catch (err) {
-    returned_data = 'There was an error with the api request';
+    returnedData = 'There was an error with the api request';
   }
   return {
     statusCode: 200,
     body: JSON.stringify({
       message: 'Here is what the api responded:',
-      data: returned_data.data.title,
+      data: returnedData.data.title,
       input: event,
     }),
   };
