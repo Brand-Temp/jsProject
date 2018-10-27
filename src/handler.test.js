@@ -1,5 +1,9 @@
 import { hello, todo, api_test } from './handler';
 
+jest.mock('axios', () => ({
+  get: () => Promise.resolve({ data: { title: 'nesciunt quas odio' } }),
+}));
+
 describe('The hello handler', () => {
   it('should return 200 and the event', async () => {
     const testEvent = {
