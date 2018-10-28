@@ -31,6 +31,7 @@
     "serverless-offline": "^3.25.12"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-preset-es2017": "^6.24.1"
   }
 }

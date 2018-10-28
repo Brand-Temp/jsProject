@@ -1,4 +1,8 @@
-import { hello, todo } from './handler';
+import { hello, todo, api_test } from './handler';
+
+jest.mock('axios', () => ({
+  get: () => Promise.resolve({ data: { title: 'sample todo fetch' } }),
+}));
 
 describe('The hello handler', () => {
   it('should return 200 and the event', async () => {
@@ -61,7 +65,28 @@ describe('The todo handler', () => {
     expect(response).toEqual({
       statusCode: 400,
       body: JSON.stringify({
-        message: 'Your request (todo/abc) was not able to be completed as the id was not a number.',
+        message:
+          'Your request (todo/abc) was not able to be completed as the id was not a number.',
+      }),
+    });
+  });
+});
+
+describe('The api_test handler', () => {
+  it('should return the "title" field of the 5th post.', async () => {
+    const testEvent = {
+      headers: {
+        'User-Agent': 'Test using axios to request from an api',
+      },
+      body: 'This test should pass',
+    };
+    const response = await api_test(testEvent);
+    expect(response).toEqual({
+      statusCode: 200,
+      body: JSON.stringify({
+        message: 'Here is what the api responded:',
+        data: 'sample todo fetch',
+        input: testEvent,
       }),
     });
   });
