@@ -1,7 +1,7 @@
 import { hello, todo, api_test } from './handler';
 
 jest.mock('axios', () => ({
-  get: () => Promise.resolve({ data: { title: 'nesciunt quas odio' } }),
+  get: () => Promise.resolve({ data: { title: 'sample todo fetch' } }),
 }));
 
 describe('The hello handler', () => {
@@ -85,7 +85,7 @@ describe('The api_test handler', () => {
       statusCode: 200,
       body: JSON.stringify({
         message: 'Here is what the api responded:',
-        data: 'nesciunt quas odio',
+        data: 'sample todo fetch',
         input: testEvent,
       }),
     });
